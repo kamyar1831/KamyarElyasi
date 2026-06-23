@@ -3,50 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کامیار الیاسی | مهندس DevOps</title>
+    <title>کامیار الیاسی | DevOps</title>
     
     <!-- Font Awesome for professional icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
         /* ====================================================
-                   CSS VARIABLES & RESET
+                   CSS VARIABLES & RESET - NEW PROFESSIONAL COLORS
                    ==================================================== */
         :root {
-            --bg-primary: #f0f4f8;
+            /* New Color Palette - Blue-Purple Theme */
+            --bg-primary: #f4f6fb;          /* طوسی-آبی بسیار روشن */
             --bg-secondary: #ffffff;
             --bg-card: #ffffff;
-            --bg-hover: #f1f5f9;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-dark: #2563eb;
-            --accent-glow: rgba(59, 130, 246, 0.15);
+            --bg-hover: #eef2ff;
+            --text-primary: #0f172a;        /* آبی-تیره مایل به مشکی */
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            
+            --accent: #4f46e5;              /* آبی-بنفش - رنگ اصلی */
+            --accent-dark: #4338ca;
+            --accent-glow: rgba(79, 70, 229, 0.12);
+            --accent-light: #eef2ff;
+            
+            --gradient-start: #1e3a8a;      /* آبی نفتی */
+            --gradient-end: #4f46e5;        /* آبی-بنفش */
+            --gradient: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            
+            --secondary-color: #d946ef;     /* صورتی-بنفش برای المان‌های خاص */
+            
             --border-color: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 8px 40px rgba(15, 23, 42, 0.12);
             --radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
         }
 
+        /* Dark Mode - with new colors */
         [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --bg-hover: #334155;
+            --bg-primary: #0b1124;          /* آبی-تیره بسیار عمیق */
+            --bg-secondary: #111c3a;
+            --bg-card: #111c3a;
+            --bg-hover: #1a2744;
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
-            --accent: #60a5fa;
-            --accent-dark: #3b82f6;
-            --accent-glow: rgba(96, 165, 250, 0.15);
-            --border-color: #334155;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+            
+            --accent: #818cf8;              /* آبی-بنفش روشن‌تر برای شب */
+            --accent-dark: #4f46e5;
+            --accent-glow: rgba(129, 140, 248, 0.12);
+            --accent-light: #1e293b;
+            
+            --border-color: #1e293b;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.6);
         }
 
         * {
@@ -81,14 +94,14 @@
         }
 
         /* ====================================================
-                   HEADER / NAVBAR - ALWAYS RTL
+                   HEADER / NAVBAR
                    ==================================================== */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
             background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--accent-glow);
             backdrop-filter: blur(12px);
             padding: 16px 0;
             transition: var(--transition);
@@ -160,7 +173,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--accent-glow);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
         }
 
         /* ====================================================
@@ -181,6 +194,7 @@
             transition: var(--transition);
         }
 
+        /* Updated gradient line and glow */
         .hero-card::before {
             content: '';
             position: absolute;
@@ -223,7 +237,7 @@
             font-size: 3.5rem;
             font-weight: 700;
             color: #fff;
-            box-shadow: 0 8px 32px var(--accent-glow);
+            box-shadow: 0 8px 32px rgba(79, 70, 229, 0.25);
             margin-bottom: 16px;
         }
 
@@ -247,12 +261,82 @@
         .hero-subtitle {
             font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 24px;
+            margin-bottom: 12px;
         }
 
         .hero-subtitle i {
             color: var(--accent);
             margin-left: 8px;
+        }
+
+        /* ===== About Me ===== */
+        .about-me {
+            background: var(--bg-hover);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .about-me:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .about-me-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-me-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-me-header h3 i {
+            color: var(--accent);
+        }
+
+        .about-me-header .chevron {
+            transition: var(--transition);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .about-me.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .about-me-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-me.open .about-me-body {
+            max-height: 300px;
+        }
+
+        .about-me-body-inner {
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
+
+        .about-me-body-inner i {
+            color: var(--accent);
+            margin-left: 6px;
         }
 
         .hero-info-grid {
@@ -360,6 +444,7 @@
             overflow: hidden;
         }
 
+        /* Updated gradient line on cards */
         .skill-card::before {
             content: '';
             position: absolute;
@@ -406,6 +491,7 @@
             text-align: center;
         }
 
+        /* Updated badge colors to match new palette */
         .skill-level-badge {
             font-size: 0.8rem;
             padding: 4px 18px;
@@ -415,8 +501,8 @@
         }
 
         .skill-level-badge.professional {
-            background: #dbeafe;
-            color: #1d4ed8;
+            background: var(--accent-light);
+            color: var(--accent-dark);
         }
 
         .skill-level-badge.intermediate {
@@ -435,8 +521,8 @@
         }
 
         [data-theme="dark"] .skill-level-badge.professional {
-            background: #1e3a5f;
-            color: #60a5fa;
+            background: #1e293b;
+            color: #818cf8;
         }
         [data-theme="dark"] .skill-level-badge.intermediate {
             background: #3d2e1a;
@@ -469,6 +555,7 @@
         }
 
         .skill-card-body h4 i {
+            color: var(--accent);
             font-size: 0.9rem;
         }
 
@@ -528,7 +615,7 @@
         }
 
         /* ====================================================
-                   FOOTER - Updated with GitHub & Telegram only
+                   FOOTER
                    ==================================================== */
         footer {
             text-align: center;
@@ -604,6 +691,9 @@
                 align-items: center;
                 gap: 12px;
             }
+            .about-me-body-inner {
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -612,13 +702,14 @@
             .hero-card { padding: 20px; }
             .skill-card-header { flex-direction: column; align-items: flex-start; }
             .skill-card { padding: 20px; }
+            .about-me { padding: 12px 16px; }
         }
     </style>
 </head>
 <body>
 
     <!-- ====================================================
-    NAVBAR - ALWAYS RTL
+    NAVBAR
     ==================================================== -->
     <nav class="navbar">
         <div class="container">
@@ -655,10 +746,27 @@
                         </h1>
                         <p class="hero-subtitle">
                             <i class="fas fa-terminal"></i>
-                            <span class="hero-title-text" data-fa="مهندس DevOps" data-en="DevOps Engineer">
-                                مهندس DevOps
+                            <span class="hero-title-text" data-fa="DevOps" data-en="DevOps">
+                                DevOps
                             </span>
                         </p>
+
+                        <!-- About Me - UPDATED TEXT -->
+                        <div class="about-me" id="aboutMe">
+                            <div class="about-me-header" onclick="toggleAbout()">
+                                <h3><i class="fas fa-user-astronaut"></i> <span data-fa="درباره من" data-en="About Me">درباره من</span></h3>
+                                <i class="fas fa-chevron-down chevron"></i>
+                            </div>
+                            <div class="about-me-body">
+                                <div class="about-me-body-inner">
+                                    <i class="fas fa-quote-right"></i>
+                                    <span data-fa="فعال ۱ ساله حوزه دواپس. با دقت بالا در جزئیات، توانایی حل مسئله و علاقه به خودکارسازی. توانایی همکاری مؤثر بین تیم‌های توسعه و عملیات برای ارائه زیرساخت قابل اعتماد و مقیاس‌پذیر." 
+                                          data-en="1 year active in DevOps. High attention to detail, problem-solving skills, and a passion for automation. Proven ability to collaborate effectively between development and operations teams to deliver reliable and scalable infrastructure.">
+                                        فعال ۱ ساله حوزه دواپس. با دقت بالا در جزئیات، توانایی حل مسئله و علاقه به خودکارسازی. توانایی همکاری مؤثر بین تیم‌های توسعه و عملیات برای ارائه زیرساخت قابل اعتماد و مقیاس‌پذیر.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="hero-info-grid">
                             <div class="hero-info-item">
@@ -721,7 +829,7 @@
     </section>
 
     <!-- ====================================================
-    FOOTER - Updated with GitHub & Telegram only
+    FOOTER
     ==================================================== -->
     <footer>
         <div class="container">
@@ -803,8 +911,7 @@
                 ],
                 "projects": [
                     "System Automation Scripts",
-                    "Command Line Tools",
-                    "Telegram Bot Development"
+                    "Command Line Tools"
                 ]
             }, {
                 "id": "s4",
@@ -909,6 +1016,14 @@
             const langToggle = document.getElementById('langToggle');
             const langLabel = document.getElementById('langLabel');
             const downloadResume = document.getElementById('downloadResume');
+
+            // ================================================
+            // ABOUT TOGGLE
+            // ================================================
+            window.toggleAbout = function() {
+                const aboutMe = document.getElementById('aboutMe');
+                aboutMe.classList.toggle('open');
+            };
 
             // ================================================
             // UTILITY FUNCTIONS
@@ -1057,6 +1172,14 @@
                 currentLang = lang;
                 renderSkills();
 
+                // Open about me by default
+                const aboutMe = document.getElementById('aboutMe');
+                if (aboutMe) {
+                    setTimeout(() => {
+                        aboutMe.classList.add('open');
+                    }, 300);
+                }
+
                 themeToggle.addEventListener('click', () => {
                     setTheme(currentTheme === 'dark' ? 'light' : 'dark');
                 });
@@ -1069,8 +1192,7 @@
 
                 console.log('🚀 Resume loaded successfully');
                 console.log('📊 Skills loaded:', SKILLS_DATA.length);
-                console.log('🌐 Language:', currentLang);
-                console.log('🎨 Theme:', currentTheme);
+                console.log('🎨 New professional color palette applied!');
             }
 
             if (document.readyState === 'loading') {
