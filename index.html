@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>کامیار الیاسی | مهندس DevOps</title>
     
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
         /* ====================================================
                    CSS VARIABLES & RESET
                    ==================================================== */
         :root {
-            --bg-primary: #f8fafc;
+            --bg-primary: #f0f4f8;
             --bg-secondary: #ffffff;
             --bg-card: #ffffff;
             --bg-hover: #f1f5f9;
@@ -36,7 +39,7 @@
             --bg-hover: #334155;
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
+            --text-muted: #94a3b8;
             --accent: #60a5fa;
             --accent-dark: #3b82f6;
             --accent-glow: rgba(96, 165, 250, 0.15);
@@ -107,6 +110,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
+        }
+
+        .navbar-brand i {
+            -webkit-text-fill-color: initial;
+            color: var(--accent);
         }
 
         .navbar-actions {
@@ -232,18 +240,27 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .hero-title-text {
+            display: inline-block;
+        }
+
         .hero-subtitle {
             font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 24px;
         }
 
+        .hero-subtitle i {
+            color: var(--accent);
+            margin-left: 8px;
+        }
+
         .hero-info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px 24px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px 24px;
             background: var(--bg-hover);
-            padding: 20px 24px;
+            padding: 24px 28px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             margin-bottom: 24px;
@@ -252,9 +269,16 @@
         .hero-info-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 0.95rem;
             color: var(--text-secondary);
+            padding: 4px 0;
+        }
+
+        .hero-info-item i {
+            color: var(--accent);
+            width: 20px;
+            font-size: 1rem;
         }
 
         .hero-info-item strong {
@@ -264,12 +288,30 @@
 
         .hero-actions {
             display: flex;
-            gap: 12px;
+            gap: 16px;
             flex-wrap: wrap;
+            margin-top: 8px;
         }
 
         .hero-actions .btn-primary {
             text-decoration: none;
+            padding: 12px 32px;
+            font-size: 1rem;
+        }
+
+        .hero-actions .btn-primary i {
+            font-size: 1.1rem;
+        }
+
+        .hero-actions .btn-outline {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-actions .btn-outline:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
         }
 
         /* ====================================================
@@ -295,26 +337,49 @@
             border-right: 4px solid var(--accent);
         }
 
+        .section-title i {
+            color: var(--accent);
+            margin-left: 10px;
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 24px;
         }
 
-        /* ===== Skill Card (always open) ===== */
+        /* ===== Skill Card ===== */
         .skill-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
-            padding: 24px;
+            padding: 28px;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
         }
 
         .skill-card:hover {
             border-color: var(--accent);
             box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
         }
 
         .skill-card-header {
@@ -337,11 +402,13 @@
         .skill-card-title .skill-icon {
             font-size: 1.8rem;
             line-height: 1;
+            width: 40px;
+            text-align: center;
         }
 
         .skill-level-badge {
             font-size: 0.8rem;
-            padding: 4px 16px;
+            padding: 4px 18px;
             border-radius: 20px;
             font-weight: 600;
             white-space: nowrap;
@@ -392,10 +459,17 @@
         .skill-card-body h4 {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin: 12px 0 8px;
+            margin: 14px 0 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-card-body h4 i {
+            font-size: 0.9rem;
         }
 
         .skill-tags {
@@ -412,6 +486,13 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         .skill-tag::before {
@@ -432,6 +513,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: var(--transition);
+        }
+
+        .skill-projects li:hover {
+            color: var(--text-primary);
+            padding-right: 4px;
         }
 
         .skill-projects li::before {
@@ -441,7 +528,7 @@
         }
 
         /* ====================================================
-                   FOOTER
+                   FOOTER - Updated with GitHub & Telegram only
                    ==================================================== */
         footer {
             text-align: center;
@@ -454,21 +541,28 @@
         footer .social-links {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 30px;
             margin-bottom: 12px;
         }
 
         footer .social-links a {
             color: var(--text-muted);
-            font-size: 1.6rem;
+            font-size: 2rem;
             transition: var(--transition);
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         footer .social-links a:hover {
             color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        footer .social-links a .social-label {
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* ====================================================
@@ -505,6 +599,11 @@
             .navbar-actions {
                 justify-content: center;
             }
+            footer .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -512,6 +611,7 @@
             .hero-title { font-size: 1.8rem; }
             .hero-card { padding: 20px; }
             .skill-card-header { flex-direction: column; align-items: flex-start; }
+            .skill-card { padding: 20px; }
         }
     </style>
 </head>
@@ -522,16 +622,16 @@
     ==================================================== -->
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-brand">📄 K. Elyasi</div>
+            <div class="navbar-brand"><i class="fas fa-code"></i> K. Elyasi</div>
             <div class="navbar-actions">
                 <button class="btn-icon" id="langToggle" title="تغییر زبان">
-                    🌐 <span id="langLabel">فا</span>
+                    <i class="fas fa-globe"></i> <span id="langLabel">فا</span>
                 </button>
                 <button class="btn-icon" id="themeToggle" title="تغییر مود">
-                    🌙
+                    <i class="fas fa-moon"></i>
                 </button>
                 <button class="btn-primary" id="downloadResume">
-                    ⬇️ دانلود رزومه
+                    <i class="fas fa-download"></i> <span data-fa="دانلود رزومه" data-en="Download Resume">دانلود رزومه</span>
                 </button>
             </div>
         </div>
@@ -549,46 +649,49 @@
                     </div>
                     <div>
                         <h1 class="hero-title">
-                            <span class="hero-part1" data-fa="من" data-en="I'm">من</span>
-                            <span class="highlight hero-part2" data-fa="کامیار الیاسی" data-en="Kamyar Elyasi">کامیار الیاسی</span>
-                            <span class="hero-part3" data-fa="هستم" data-en="am">هستم</span>
+                            <span class="hero-title-text" data-fa="من کامیار الیاسی هستم" data-en="I'm Kamyar Elyasi">
+                                من کامیار الیاسی هستم
+                            </span>
                         </h1>
                         <p class="hero-subtitle">
-                            🖥️ <span class="hero-title-text" data-fa="مهندس DevOps" data-en="DevOps Engineer">مهندس DevOps</span>
+                            <i class="fas fa-terminal"></i>
+                            <span class="hero-title-text" data-fa="مهندس DevOps" data-en="DevOps Engineer">
+                                مهندس DevOps
+                            </span>
                         </p>
 
                         <div class="hero-info-grid">
                             <div class="hero-info-item">
-                                📅
-                                <strong data-fa="تولد:" data-en="Birth:">تولد:</strong>
+                                <i class="fas fa-calendar-alt"></i>
+                                <strong data-fa="تولد:" data-en="Born:">تولد:</strong>
                                 <span data-fa="۱۳۸۵" data-en="2006">۱۳۸۵</span>
                             </div>
                             <div class="hero-info-item">
-                                📍
+                                <i class="fas fa-map-marker-alt"></i>
                                 <strong data-fa="محل:" data-en="Location:">محل:</strong>
                                 <span data-fa="اصفهان / شهرکرد" data-en="Isfahan / Shahrekord">اصفهان / شهرکرد</span>
                             </div>
                             <div class="hero-info-item">
-                                🎓
+                                <i class="fas fa-graduation-cap"></i>
                                 <strong data-fa="رشته:" data-en="Field:">رشته:</strong>
                                 <span data-fa="مدیریت مالی" data-en="Financial Management">مدیریت مالی</span>
                             </div>
                             <div class="hero-info-item">
-                                📞
+                                <i class="fas fa-phone"></i>
                                 <span>۰۹۱۳۷۸۱۶۶۸۰</span>
                             </div>
                             <div class="hero-info-item">
-                                ✉️
+                                <i class="fas fa-envelope"></i>
                                 <span>elyasikamyar27@gmail.com</span>
                             </div>
                         </div>
 
                         <div class="hero-actions">
                             <a href="tel:09137816680" class="btn-primary">
-                                📞 <span data-fa="تماس" data-en="Call">تماس</span>
+                                <i class="fas fa-phone"></i> <span data-fa="تماس" data-en="Call">تماس</span>
                             </a>
-                            <a href="mailto:elyasikamyar27@gmail.com" class="btn-primary" style="background:var(--bg-hover); color:var(--text-primary);">
-                                ✉️ <span data-fa="ایمیل" data-en="Email">ایمیل</span>
+                            <a href="mailto:elyasikamyar27@gmail.com" class="btn-primary btn-outline">
+                                <i class="fas fa-envelope"></i> <span data-fa="ایمیل" data-en="Email">ایمیل</span>
                             </a>
                         </div>
                     </div>
@@ -604,8 +707,11 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-fa="مهارت‌های تخصصی" data-en="Core Skills">
-                    مهارت‌های تخصصی
+                    <i class="fas fa-cogs"></i> <span data-fa="مهارت‌های تخصصی" data-en="Core Skills">مهارت‌های تخصصی</span>
                 </h2>
+                <span style="color:var(--text-muted); font-size:0.9rem; display:flex; align-items:center; gap:6px;">
+                    <i class="fas fa-chevron-left"></i> <span data-fa="۸ مهارت" data-en="8 Skills">۸ مهارت</span>
+                </span>
             </div>
 
             <div class="skills-grid" id="skillsContainer">
@@ -615,15 +721,19 @@
     </section>
 
     <!-- ====================================================
-    FOOTER
+    FOOTER - Updated with GitHub & Telegram only
     ==================================================== -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" title="GitHub">🐙</a>
-                <a href="#" title="LinkedIn">🔗</a>
-                <a href="#" title="Telegram">✈️</a>
-                <a href="#" title="Twitter">🐦</a>
+                <a href="https://github.com/Kamyar-Eliasy/" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                    <span class="social-label">GitHub</span>
+                </a>
+                <a href="https://t.me/kamyarelyasi2" target="_blank" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                    <span class="social-label">Telegram</span>
+                </a>
             </div>
             <p><span data-fa="© ۲۰۲۶ کامیار الیاسی · تمامی حقوق محفوظ است" data-en="© 2026 Kamyar Elyasi · All rights reserved">© ۲۰۲۶ کامیار الیاسی · تمامی حقوق محفوظ است</span></p>
         </div>
@@ -637,7 +747,7 @@
             'use strict';
 
             // ================================================
-            // DATA -直接从JSON导入
+            // DATA
             // ================================================
             const SKILLS_DATA = [{
                 "id": "s1",
@@ -655,10 +765,10 @@
                     "Bash Scripting"
                 ],
                 "projects": [
-                    "راه‌اندازی سرور لینوکسی",
-                    "مدیریت کاربران و سطوح دسترسی",
-                    "پیاده‌سازی اسکریپت‌های مانیتورینگ",
-                    "عیب‌یابی سرویس‌های شبکه"
+                    "Linux Server Setup & Configuration",
+                    "User Management & Access Control",
+                    "Monitoring Scripts Implementation",
+                    "Network Services Troubleshooting"
                 ]
             }, {
                 "id": "s2",
@@ -674,9 +784,9 @@
                     "Performance Monitoring"
                 ],
                 "projects": [
-                    "راه‌اندازی دامنه ویندوز",
-                    "مدیریت گروهی کاربران",
-                    "پیاده‌سازی سیاست‌های امنیتی"
+                    "Windows Domain Setup",
+                    "Group Policy Management",
+                    "Security Policy Implementation"
                 ]
             }, {
                 "id": "s3",
@@ -692,8 +802,9 @@
                     "Web Scraping"
                 ],
                 "projects": [
-                    "اسکریپت‌های اتوماسیون سیستم",
-                    "ابزارهای خط فرمان"
+                    "System Automation Scripts",
+                    "Command Line Tools",
+                    "Telegram Bot Development"
                 ]
             }, {
                 "id": "s4",
@@ -708,9 +819,9 @@
                     "Automation"
                 ],
                 "projects": [
-                    "اسکریپت‌های بکاپ‌گیری",
-                    "گزارش‌دهی خودکار",
-                    "مدیریت لاگ‌ها"
+                    "Backup Automation Scripts",
+                    "Automated Reporting Tools",
+                    "Log Management System"
                 ]
             }, {
                 "id": "s5",
@@ -726,9 +837,9 @@
                     "Conflict Resolution"
                 ],
                 "projects": [
-                    "مدیریت نسخه پروژه‌های شخصی",
-                    "همکاری تیمی روی GitHub",
-                    "استفاده از Git lab"
+                    "Personal Project Version Control",
+                    "Team Collaboration on GitHub",
+                    "Git Lab Project Management"
                 ]
             }, {
                 "id": "s6",
@@ -743,8 +854,8 @@
                     "Volume Management"
                 ],
                 "projects": [
-                    "ساخت محیط آزمایشگاهی شخصی",
-                    "کانتینری‌سازی سرویس‌های ساده"
+                    "Personal Lab Environment Setup",
+                    "Simple Service Containerization"
                 ]
             }, {
                 "id": "s7",
@@ -761,8 +872,8 @@
                     "Subnetting"
                 ],
                 "projects": [
-                    "طراحی سناریوهای شبکه آزمایشگاهی",
-                    "عیب‌یابی ارتباطات"
+                    "Network Lab Scenarios Design",
+                    "Connectivity Troubleshooting"
                 ]
             }, {
                 "id": "s8",
@@ -778,9 +889,9 @@
                     "DOM Manipulation"
                 ],
                 "projects": [
-                    "طراحی سایت شخصی",
-                    "رزومه تعاملی",
-                    "پروژه‌های فرانت‌اند"
+                    "Personal Portfolio Website",
+                    "Interactive Resume Page",
+                    "Front-end Development Projects"
                 ]
             }];
 
@@ -842,16 +953,15 @@
                                 <span class="skill-level-badge ${levelClass}">${levelDisplay}</span>
                             </div>
                             <div class="skill-card-body">
-                                <h4 data-fa="📌 مهارت‌ها" data-en="📌 Skills">📌 مهارت‌ها</h4>
+                                <h4><i class="fas fa-check-circle"></i> <span data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</span></h4>
                                 <div class="skill-tags">${tagsHtml}</div>
-                                <h4 data-fa="📁 پروژه‌ها" data-en="📁 Projects">📁 پروژه‌ها</h4>
+                                <h4><i class="fas fa-project-diagram"></i> <span data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</span></h4>
                                 <ul class="skill-projects">${projectsHtml}</ul>
                             </div>
                         </div>
                     `;
                 }).join('');
 
-                // Update language for new elements
                 updateTexts();
             }
 
@@ -903,10 +1013,10 @@
                 currentTheme = theme;
                 if (theme === 'dark') {
                     document.documentElement.setAttribute('data-theme', 'dark');
-                    themeToggle.textContent = '☀️';
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 } else {
                     document.documentElement.removeAttribute('data-theme');
-                    themeToggle.textContent = '🌙';
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
                 localStorage.setItem('resume_theme', theme);
             }
